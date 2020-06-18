@@ -1,0 +1,185 @@
+@font-face {
+  font-family: 'Lobster';
+  src: local('Lobster Regular'), url('../fonts/Lobster-Regular.woff') format('woff');
+}
+
+:root {
+  --font-color: #575858;
+  --black-color: #000;
+  --gray-color: #ccc;
+  --gray-light-color: #F5F5F5;
+  --font: 'Lobster', cursive;
+  --font2: 'Roboto', sans-serif;
+}
+
+.fof__animation svg {
+  display: block;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#i-fof-browser {
+  -webkit-transform-origin: 260px 304px;
+  transform-origin: 260px 304px;
+  -webkit-animation: i-fof-browser 4s infinite;
+  animation: i-fof-browser 4s infinite;
+}
+
+#i-fof-shadow {
+  -webkit-transform-origin: 282px 410px;
+  transform-origin: 282px 410px;
+  -webkit-animation: i-fof-shadow 4s infinite;
+  animation: i-fof-shadow 4s infinite;
+}
+
+@-webkit-keyframes i-fof-browser {
+
+  0%,
+  100% {
+    -webkit-transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    -webkit-transform: translateY(-10%) scale(0.9);
+    transform: translateY(-10%) scale(0.9);
+  }
+}
+
+@keyframes i-fof-browser {
+
+  0%,
+  100% {
+    -webkit-transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    -webkit-transform: translateY(-10%) scale(0.9);
+    transform: translateY(-10%) scale(0.9);
+  }
+}
+
+@-webkit-keyframes i-fof-shadow {
+
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+
+@keyframes i-fof-shadow {
+
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+
+.container {
+  width: 100%;
+  font-family: var(--font);
+}
+
+.fof h1 {
+  font-size: 2.55rem;
+  letter-spacing: 2.5px;
+  color: #1abc9c;
+}
+
+.fof a {
+  text-decoration: none;
+  color: #EC407A;
+  display: inline-block;
+  position: relative;
+}
+
+.fof a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: #EC407A;
+  transform: scaleX(0);
+  transform-origin: right bottom;
+  transition-duration: .3s;
+  transition: transform .5s ease;
+}
+
+.fof a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left bottom;
+}
+
+.text-component {
+  font-size: 1.2rem;
+  letter-spacing: 1.2px;
+  color: #575858;
+}
+
+.margin-bottom-lg {
+  margin-bottom: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* --- Comingsoon page --- */
+
+.cms-bg {
+  background: url("../images/commingsoon-banner.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100vh;
+  position: relative;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.cms-bg .logo {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+}
+
+.cms-bg .logo img {
+  width: 130px;
+  height: auto;
+}
+
+.cms-bg .middle h1 {
+  font-size: 4em;
+  font-weight: 600;
+  letter-spacing: 10px;
+  color: #fff;
+}
+
+.cms-bg .middle hr {
+  margin: auto;
+  width: 50%;
+  border-width: 2.5px;
+}
+
+#countdown {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  letter-spacing: 1px;
+}
