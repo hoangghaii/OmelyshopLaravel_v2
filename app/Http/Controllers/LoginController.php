@@ -54,11 +54,11 @@ class LoginController extends Controller
 
     public function login_customer(Request $request)
     {
-        $customer_name = $request->customer_name;
+        $customer_email = $request->customer_email;
         $customer_password = md5($request->customer_password);
 
         $result = DB::table('tbl_customer')
-            ->where('customer_name', $customer_name)
+            ->where('customer_email', $customer_email)
             ->where('customer_password', $customer_password)
             ->first();
 

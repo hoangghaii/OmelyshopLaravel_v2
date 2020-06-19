@@ -3404,13 +3404,13 @@ select.js-select {
     justify-content: center;
 }
 
-.page-item {
+.page-link {
     border: 1px solid var(--pink-color2);
-    padding: 5px 12px;
+    padding: 6px 12px;
     margin: 0 5px;
 }
 
-.page-item.active {
+.page-item.active .page-link {
     background: var(--pink-color2);
     color: var(--white-color);
 }

@@ -13,6 +13,7 @@
                 <thead>
                     <tr>
                         <th style="width: 12%">Ngày</th>
+                        <th>Tổng đơn hàng</th>
                         <th>Chưa xử lý</th>
                         <th>Đã giao hàng</th>
                         <th>Đang tạm giữ</th>
@@ -21,8 +22,9 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                    @foreach ($sta_ord as $sta_order)
                     <tr>
+                        <td>{{ $sta_order->created_at }}</td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -35,6 +37,7 @@
                             </a>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

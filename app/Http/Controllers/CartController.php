@@ -77,7 +77,7 @@ class CartController extends Controller
         $data['qty'] = $request->cart_product_qty;
         $data['name'] = $request->cart_product_name;
         $data['price'] = $request->cart_product_price;
-        $data['weight'] = $request->cart_product_price;
+        $data['weight'] = $request->cart_product_weight;
         $data['options']['image'] = $request->cart_product_image;
 
         Cart::add($data);

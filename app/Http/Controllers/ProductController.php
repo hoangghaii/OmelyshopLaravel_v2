@@ -43,7 +43,7 @@ class ProductController extends Controller
             ->join('tbl_sub_category', 'tbl_product.sub_category_id', '=', 'tbl_sub_category.sub_category_id')
             ->select('tbl_product.*', 'tbl_category_product.category_name', 'tbl_sub_category.sub_category_name')
             ->orderByDesc('product_id')
-            ->paginate(5);
+            ->paginate(12);
 
         $manage_product = view('admin.all_product')->with('all_product', $all_product);
 

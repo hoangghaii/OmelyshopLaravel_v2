@@ -32,7 +32,7 @@ class OrderController extends Controller
         $all_order = DB::table('tbl_order')
             ->join('tbl_customer', 'tbl_customer.customer_id', '=', 'tbl_order.customer_id')
             ->select('tbl_customer.customer_name', 'tbl_order.*')
-            ->orderByDesc('tbl_order.created_at')
+            ->orderByDesc('tbl_order.order_id')
             ->get();
 
         return view('admin.manage_order')->with('all_order', $all_order);

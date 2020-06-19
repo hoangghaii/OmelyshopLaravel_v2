@@ -77,71 +77,44 @@ class CheckoutController extends Controller
 
     public function add_to_cart(Request $request)
     {
-        $data = $request->all();
-
         $customer_id = Session::get('customer_id');
 
-        $user_province = Province::where('matp', $data['province'])->value('name');
-        $user_district = District::where('maqh', $data['district'])->value('name');
-        $user_ward = Ward::where('xaid', $data['ward'])->value('name');
+        if (!$customer_id) {
+            $data = $request->all();
 
-        if ($customer_id) {
+            // $user_province = Province::where('matp', $data['province'])->value('name');
+            // $user_district = District::where('maqh', $data['district'])->value('name');
+            // $user_ward = Ward::where('xaid', $data['ward'])->value('name');
 
-            $update_customer = Customer::find($customer_id);
 
-            if (!$data['inputMail']) {
-                $update_customer->customer_name = $data['inputName'];
-                $update_customer->customer_phone = $data['inputPhone'];
-                $update_customer->customer_email = "";
-                $update_customer->customer_province = $user_province;
-                $update_customer->customer_district = $user_district;
-                $update_customer->customer_ward = $user_ward;
-                $update_customer->customer_address = $data['inputAddress'];
-            } else {
-                $update_customer->customer_name = $data['inputName'];
-                $update_customer->customer_phone = $data['inputPhone'];
-                $update_customer->customer_email = $data['inputMail'];
-                $update_customer->customer_province = $user_province;
-                $update_customer->customer_district = $user_district;
-                $update_customer->customer_ward = $user_ward;
-                $update_customer->customer_address = $data['inputAddress'];
-            }
-
-            $update_customer->save();
-            $order_customer_id  = $update_customer->customer_id;
-        } else {
-
-            $new_customer = new Customer();
             if (
                 !$data['inputName'] ||
-                !$data['inputPhone'] ||
-                !$user_province ||
-                !$user_district ||
-                !$user_ward ||
+                !$data['inputPassword'] ||
+                !$data['inputName'] ||
+                !$data['inputMail'] ||
+                !Province::where('matp', $data['province'])->value('name') ||
+                !District::where('maqh', $data['district'])->value('name') ||
+                !Ward::where('xaid', $data['ward'])->value('name') ||
                 !$data['inputAddress']
             ) {
-                return back()->with('thongbao', 'Bạn cần điền đầy đủ thông tin cần thiết để đặt hàng!');
+                return back()->with('error', 'Bạn cần điền đầy đủ thông tin cần thiết để đặt hàng!');
             } else {
-                if (!$data['inputMail']) {
-                    $new_customer->customer_name = $data['inputName'];
-                    $new_customer->customer_phone = $data['inputPhone'];
-                    $new_customer->customer_email = "";
-                    $new_customer->customer_province = $user_province;
-                    $new_customer->customer_district = $user_district;
-                    $new_customer->customer_ward = $user_ward;
-                    $new_customer->customer_address = $data['inputAddress'];
-                } else {
-                    $new_customer->customer_name = $data['inputName'];
-                    $new_customer->customer_phone = $data['inputPhone'];
-                    $new_customer->customer_email = $data['inputMail'];
-                    $new_customer->customer_province = $user_province;
-                    $new_customer->customer_district = $user_district;
-                    $new_customer->customer_ward = $user_ward;
-                    $new_customer->customer_address = $data['inputAddress'];
-                }
+                $new_customer = new Customer();
+
+                $new_customer->customer_name = $data['inputName'];
+                $new_customer->customer_password = $data['inputPassword'];
+                $new_customer->customer_phone = $data['inputPhone'];
+                $new_customer->customer_email = $data['inputMail'];
+                $new_customer->customer_province = Province::where('matp', $data['province'])->value('name');
+                $new_customer->customer_district = District::where('maqh', $data['district'])->value('name');
+                $new_customer->customer_ward = Ward::where('xaid', $data['ward'])->value('name');
+                $new_customer->customer_address = $data['inputAddress'];
+
                 $new_customer->save();
                 $order_customer_id  = $new_customer->customer_id;
             }
+        } else {
+            $order_customer_id = $customer_id;
         }
 
         //Order

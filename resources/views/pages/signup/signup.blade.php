@@ -10,12 +10,16 @@
             @csrf
 
             <label>
-                <span>Họ và tên</span>
-                <input type="text" name="customer_name" required autocomplete="off"/>
+                <span>Email</span>
+                <input type="email" name="customer_email" required autocomplete="off" placeholder="xxx@gmail.com"
+                data-validation="required" data-validation="length" data-validation-length="5-200"
+                data-validation-error-msg="Bạn chưa nhập đúng email"/>
             </label>
             <label>
                 <span>Mật khẩu</span>
-                <input type="password" name="customer_password" required autocomplete="off"/>
+                <input type="password" name="customer_password" required autocomplete="off"
+                data-validation="required" data-validation="length" data-validation-length="5-200"
+                data-validation-error-msg="Bạn chưa nhập đúng mật khẩu"/>
             </label>
             <p class="forgot-pass">Quên mật khẩu?</p>
             <button type="submit" class="submit">Đăng nhập</button>
@@ -65,6 +69,7 @@
                 <label>
                     <span>Email*</span>
                     <input type="email" name="email" pattern=".+@gmail.com" required autocomplete="off"
+                    placeholder="xxx@gmail.com"
                     data-validation="required" data-validation-error-msg="Bạn nên nhập đúng định dạng xxx@gmail.com">
                 </label>
 
