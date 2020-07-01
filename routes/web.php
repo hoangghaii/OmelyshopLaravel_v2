@@ -112,3 +112,4 @@ Route::post('/update-order-qty', 'OrderController@update_order_qty');
 //statistical
 Route::get('/statistical-order', 'StatisticalController@statistical_order');
 Route::get('/statistical-product', 'StatisticalController@statistical_product');
+Route::get('/view-detail-sta-product/{product_id}', 'StatisticalController@view_detail_sta_product');

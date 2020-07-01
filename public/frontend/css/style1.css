@@ -1,12 +1,20 @@
 /* --- Import fonts ---- */
-
-@import url("https://fonts.googleapis.com/css?family=Dancing+Script&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-
 @font-face {
     font-family: "Lobster";
-    src: local("Lobster Regular"),
+    src: local("./fonts/Lobster Regular"),
         url("../fonts/Lobster-Regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'Dancing Script';
+    src: local('./fonts/Dancing Script Regular'),
+        url('../fonts/DancingScript-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: local('./fonts/Roboto Regular'),
+        url('../fonts/Roboto-Regular.woff') format('woff');
 }
 
 :root {

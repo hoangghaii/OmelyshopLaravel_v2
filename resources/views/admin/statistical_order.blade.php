@@ -24,7 +24,9 @@
                 <tbody>
                     @foreach ($sta_ord as $sta_order)
                     <tr>
-                        <td>{{ $sta_order->created_at }}</td>
+                        <td>
+                            {{ \Carbon\Carbon::parse($sta_order->created_at)->format('d/m/Y')}}
+                        </td>
                         <td></td>
                         <td></td>
                         <td></td>

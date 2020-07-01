@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Category;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class StatisticalController extends Controller
         $this->AdminAuthCheck();
 
         // $sta_ord = Order::distinct()
-        //     ->select('order_id', 'order_total', 'order_status', 'created_at')->get();
+        //     ->select('order_total', 'created_at')->get();
         $sta_ord = DB::table('tbl_order')->distinct()
             ->select('created_at')
             ->orderByDesc('created_at')->get();
@@ -41,5 +42,18 @@ class StatisticalController extends Controller
         $sta_product = Product::select('product_id', 'product_name', 'product_image', 'product_sold', 'product_quantity_instock')
             ->paginate(10);
         return view('admin.statistical_product')->with(compact('sta_product'));
+    }
+
+    public function view_detail_sta_product($product_id)
+    {
+        $this->AdminAuthCheck();
+
+        $dtl_prod = Product::where('product_id', $product_id)
+            ->select('product_name', 'product_image', 'product_price')->get();
+
+        $dtl_sold_prod = OrderDetail::where('product_id', $product_id)
+            ->select('product_quantity', 'created_at')->get();
+
+        return view('admin.view_detail_sta_product')->with(compact('dtl_prod', 'dtl_sold_prod'));
     }
 }
